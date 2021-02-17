@@ -64,3 +64,45 @@ class FormRegion(forms.Form):
         ]
     )
 
+class FormEmpleado(forms.Form):
+
+    fullname = forms.CharField(
+        label="Nombre completo",
+        max_length=50,
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Ingrese el nombre completo',
+                'class': 'fullname_form_empleados'
+            }
+        ),
+        validators=[
+            validators.MinLengthValidator(2,'El nombre es corto'),
+            validators.MaxLengthValidator(50,'Superaste el límite de caracteres')
+        ]
+    )
+    job = forms.CharField(
+        label="Cargo",
+        max_length=30,
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Ingrese la labor que desempeña',
+                'class': 'job_form_empleados'
+            }
+        ),
+        validators=[
+            validators.MinLengthValidator(2,'El nombre es corto'),
+            validators.MaxLengthValidator(30,'Superaste el límite de caracteres')
+        ]
+    )
+
+    opciones_estado = [
+        (1,'A'),
+        (0,'B'),
+    ]
+    estado = forms.TypedChoiceField(
+        label="ESTADO",
+        choices=opciones_estado
+    )
+

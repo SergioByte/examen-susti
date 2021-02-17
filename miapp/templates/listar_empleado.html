@@ -1,11 +1,54 @@
 {% extends 'layout.html' %}
 
-
 {% block title %}
-    Listar carrera
-{% endblock %}
+    {{titulo}}
+{% endblock title %}
+
 {% block content %}
-    <H1 class="title"> 
-        Listar Empleado
-    </H1>
-{% endblock %}
+    <h1 class="title"> {{titulo}} </h1>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    
+    {% for employee in employees %}
+        <div class="empleado-item">
+            {% if empleado.imagen != 'null' %}
+                <div class="image">
+                    <br>
+                    <img src="{{empleado.imagen.url}}" />
+                </div>
+            {% endif %}
+            <div >
+                <br>
+
+                <h2>
+                    Nombre completo: {{employee.fullname}}
+                </h2>
+                <h2>
+                    Cargo: {{employee.job}}
+                </h2>
+                <h2>
+                    Estado: {{employee.estado}}
+                </h2>
+                <span class="date">
+                    Fecha: {{employee.creado}}
+                </span>
+                <p>
+                   
+                    <br>
+                    <a href="{% url 'eliminar_empleado' id=employee.id %}" class="btn btn-delete">
+                        Eliminar
+                    </a>
+                </p>
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>    
+    {% endfor %}
+    
+{% endblock content %}

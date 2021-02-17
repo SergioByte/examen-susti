@@ -1,11 +1,17 @@
-{% extends 'layout.html' %}
-
+{{% extends 'layout.html' %}
 
 {% block title %}
-    Agregar carrera
+    Empleados
 {% endblock %}
 {% block content %}
     <H1 class="title"> 
-       Registrar empleado
+        Registrar empleados
     </H1>
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Agregar" />
+
+    </form>
 {% endblock %}

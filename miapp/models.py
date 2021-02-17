@@ -14,4 +14,14 @@ class Region(models.Model):
     class Meta:
         verbose_name = "Region"
         verbose_name_plural = "Regiones"
+class Employee(models.Model):
+    fullname = models.CharField(max_length=50, verbose_name="Nombre Completo")
+    job = models.CharField(max_length=30, verbose_name="Trabajo")
+    image = models.ImageField(default='null', verbose_name="Identificacion", upload_to="empleados")
+    estado = models.CharField(max_length= 1, verbose_name="Estado")      
+    creado = models.DateTimeField(auto_now_add=True, verbose_name="Creado")
+    actualizado = models.DateTimeField(auto_now=True, verbose_name="Editado")
+    class Meta:
+        verbose_name = "Empleado"
+        verbose_name_plural = "Empleados"
 
