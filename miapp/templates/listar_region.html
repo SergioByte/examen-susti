@@ -1,11 +1,56 @@
 {% extends 'layout.html' %}
 
-
 {% block title %}
-    Listar Curso
-{% endblock %}
+    {{titulo}}
+{% endblock title %}
+
 {% block content %}
-    <H1 class="title"> 
-        Listar Region
-    </H1>
-{% endblock %}
+    <h1 class="title"> {{titulo}} </h1>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    
+    {% for region in regiones %}
+        <div class="region-item">
+            {% if region.imagen != 'null' %}
+                <div class="image">
+                    <br>
+                    <img src="{{region.imagen.url}}" />
+                </div>
+            {% endif %}
+            <div >
+                <br>
+                <span class="date">
+                    Fecha: {{region.date}}
+                </span>
+                <h2>
+                    Nombre: {{region.name}}
+                </h2>
+                <h2>
+                    Casos: {{region.cases}}
+                </h2>
+                <h2>
+                    Muertes: {{region.deaths}}
+                </h2>
+                <h2>
+                    Letalidad: {{region.lethality}}
+                </h2>
+                <p>
+                   
+                    <br>
+                    <a href="{% url 'eliminar_region' id=region.id %}" class="btn btn-delete">
+                        Eliminar
+                    </a>
+                </p>
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>    
+    {% endfor %}
+    
+{% endblock content %}
