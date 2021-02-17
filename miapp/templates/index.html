@@ -1,0 +1,15 @@
+<!-- COMENTARIO EN HTML...  -->
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{titulo}}
+{% endblock title %}
+
+{% block content %}
+{% comment 'Datos de la página Index' %}
+    En esta página se mostrará los datos del alumno
+{% endcomment %}
+    <h1 class="title"> ALUMNO </h1>
+    <p>Sergio Daniel Vite Cochachin</p>
+    <p>Año: 2021</p>
+{% endblock content %}
