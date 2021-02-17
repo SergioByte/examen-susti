@@ -32,4 +32,12 @@ urlpatterns = [
     path('eliminar_region/<int:id>',views.eliminar_region, name="eliminar_region"),
     path('save-region/',views.save_region, name="save_region"),
     path('create-full-region/',views.create_full_region, name="create_full_region"),
+
+    
 ]
+
+# Configuración para la carga de imágenes
+if settings.DEBUG:
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+from django.conf import settings
